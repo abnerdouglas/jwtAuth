@@ -8,3 +8,4 @@
 ### Requisições HTTP
 - POST -> http://localhost:8000/api/v1/auth/register - Cadastro
 - POST -> http://localhost:8000/api/v1/auth/login - Login 
+- GET -> http://localhost:8000/api/v1/auth/users - Registro cadastros

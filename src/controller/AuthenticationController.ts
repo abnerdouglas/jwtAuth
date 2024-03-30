@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { AuthenticationService } from "../service/Authentication";
+import { UsersRepo } from "../repository/UsersRepo";
 
 class AuthenticationController {
   // login controller
@@ -41,6 +42,26 @@ class AuthenticationController {
       return res.status(200).json({
         status: "Ok!",
         message: "Successfully registerd users!",
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: "Internal server Error!",
+        message: "Internal server Error!",
+      });
+    }
+  }
+
+  // Método para obter informações de todos os usuários cadastrados
+  async getUsers(req: Request, res: Response) {
+    try {
+      // Use o repositório de usuários para buscar todos os usuários
+      const users = await new UsersRepo().getAll();
+
+      // Retorne a lista de usuários
+      return res.status(200).json({
+        status: "Ok!",
+        message: "Successfully fetched users!",
+        users: users,
       });
     } catch (error) {
       return res.status(500).json({
